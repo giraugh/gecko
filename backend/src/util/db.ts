@@ -1,6 +1,7 @@
 import sqlite from 'sqlite3'
+import loadTestData from './loadTestData'
 
-const db = new sqlite.Database('../../../gecko.db')
+const db = new sqlite.Database('./gecko.db')
 
 // Setup database
 db.serialize(() => {
@@ -20,6 +21,9 @@ db.serialize(() => {
         startDate INTEGER,
         endDate INTEGER
     );`)
+
+    // Load test data
+    loadTestData(db)
 })
 
 export const getUser = id => new Promise((resolve, reject) => {
