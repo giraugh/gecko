@@ -1,6 +1,7 @@
 export { getUser } from './getUser'
 export { getGoal } from './getGoal'
 export { getCharity } from './getCharity'
+export { getAllCharities } from './getAllCharities'
 export { getAuthoredGoals } from './getAuthoredGoals'
 export { getRefereedGoals } from './getRefereedGoals'
 export { createGoal } from './createGoal'

@@ -29,6 +29,25 @@ const loadTestData = db => {
             phone: "0404044044"
         }
     ]
+    
+    const testGoals = [
+        {
+            author: 1,
+            friend: 2,
+            amount: 5.00,
+            charity: 1,
+            startDate: Date.now(),
+            endDate: Date.now() + 86400000
+        },
+        {
+            author: 2,
+            friend: 1,
+            amount: 10.20,
+            charity: 2,
+            startDate: Date.now(),
+            endDate: Date.now() + 50000000
+        }
+    ]
 
     const userValues = testUsers
         .map(({name, email, phone}) => `("${name}", "${email}", "${phone}")`)
@@ -36,8 +55,12 @@ const loadTestData = db => {
     const charityValues = testCharities
         .map(({name, url, imageUrl}) => `("${name}", "${url}", "${imageUrl}")`)
         .join(',')
+    const goalValues = testGoals
+        .map(g => `("${g.author}", "${g.friend}", "${g.amount}", "${g.charity}", "${g.startDate}", "${g.endDate}")`)
+        .join(',')
     db.exec(`INSERT INTO Users (name, email, phone) VALUES ${userValues}`)
     db.exec(`INSERT INTO Charities (name, url, imageUrl) VALUES ${charityValues}`)
+    db.exec(`INSERT INTO Goals (author, friend, amount, charity, startDate, endDate) VALUES ${goalValues}`)
 }
 
 export default loadTestData

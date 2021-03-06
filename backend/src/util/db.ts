@@ -33,8 +33,12 @@ db.serialize(() => {
         imageUrl VARCHAR(100)
     );`)
 
-    // Load test data
-    loadTestData(db)
+    // Load test data if there is no data
+    db.get(`SELECT * FROM Users`, (err, row) => {
+        if (!err && !row) {
+            loadTestData(db)
+        }
+    })
 })
 
 export const getUser = id => new Promise((resolve, reject) => {
@@ -61,6 +65,16 @@ export const getCharity = id => new Promise((resolve, reject) => {
             } else {
                 resolve(row)
             }
+        }
+    })
+})
+
+export const getAllCharities = () => new Promise((resolve, reject) => {
+    db.all(`SELECT * FROM Charities;`, (err, rows) => {
+        if (err) {
+            reject(err)
+        } else {
+            resolve(rows)
         }
     })
 })

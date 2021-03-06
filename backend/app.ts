@@ -5,6 +5,7 @@ import {
     getUser,
     getGoal,
     getCharity,
+    getAllCharities
     getAuthoredGoals,
     getRefereedGoals,
     createGoal,
@@ -31,6 +32,7 @@ app.get('/', async (req, res) => res.send('Gecko Backend'))
 app.get('/users', expectFields(['id'], 'query'), getUser)
 app.get('/goals', expectFields(['id'], 'query'), getGoal)
 app.get('/charities', expectFields(['id'], 'query'), getCharity)
+app.get('/charities/all', getAllCharities)
 app.get('/goals/authored', expectFields(['id'], 'query'), getAuthoredGoals)
 app.get('/goals/refereed', expectFields(['id'], 'query'), getRefereedGoals)
 app.post('/users', expectFields(createUserFields, 'body'), createUser)
