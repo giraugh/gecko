@@ -33,7 +33,7 @@ export const getAuthoredGoals = async (id) => {
     return goals
 }
 
-export const createGoal = async (authorID, friendID, amount, endDate) => {
+export const createGoal = async ({ authorID, friendID, amount, endDate }) => {
     const goal = await instance.post(`/goals`, {
         author: authorID,
         friend: friendID,
@@ -41,4 +41,13 @@ export const createGoal = async (authorID, friendID, amount, endDate) => {
         startDate: Date.now(),
         endDate
     })
+    return goal
+}
+
+export const createUser = async ({ email, phone }) => {
+    const user = await instance.post(`/users`, {
+        email,
+        phone
+    })
+    return user
 }
