@@ -53,7 +53,7 @@ export const Remaining = styled.p`
   font-weight: bold;
 `;
 
-export const Date = styled.p`
+export const DateLabel = styled.p`
   margin: 4px 0 30px;
   font-size: 1.4rem;
 `;

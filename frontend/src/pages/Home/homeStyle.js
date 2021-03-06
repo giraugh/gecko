@@ -59,11 +59,11 @@ export const TotalPledgeLabel = styled.span`
 export const GoalDetails = styled.div`
   display: flex;
 
-  & > span:first-child {
+  & > span:first-of-type {
    font-weight: bold;
   }
 
-  & > span:first-child:after {
+  & > span:first-of-type:after {
     margin-left: 4px;
     content: '-';
     font-weight: normal;
