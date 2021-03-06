@@ -31,7 +31,7 @@ const Home = () => {
         <span>
         Total current pledged
         </span>
-        <h3>{goals ? goals.map(g => g.amount).reduce(sum) : 0}$</h3>
+        <h3>{goals ? goals.map(g => g.amount).reduce(sum, 0) : 0}$</h3>
       </div>
       <p>Henlo says gencko</p>
       <Button type="button" onClick={() => push('/goal/test')}>View test goal</Button>
