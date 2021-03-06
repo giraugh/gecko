@@ -4,6 +4,9 @@ import { ThemeProvider, Global } from '@emotion/react';
 
 import {
   Onboarding,
+  Home,
+  CreateTask,
+  TaskDetails,
 } from 'pages';
 
 import theme from 'theme';
@@ -24,6 +27,9 @@ const App = () => {
 
         <Switch>
           <Route path="/" component={Onboarding} exact />
+          <Route path="/home" component={Home} exact />
+          <Route path="/new" component={CreateTask} exact />
+          <Route path="/goal/:id" component={TaskDetails} exact />
         </Switch>
       </ThemeProvider>
     </BrowserRouter>

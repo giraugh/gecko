@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import {
   Container,
@@ -10,6 +11,7 @@ import {
   ArrowButton,
 } from './onboardingStyle';
 
+import logo from 'res/logo.png';
 import arrowLeft from 'res/arrow-left.svg';
 import arrowRight from 'res/arrow-right.svg';
 import check from 'res/check.svg';
@@ -19,7 +21,7 @@ const slides = [
     color: '#77B255',
     content: (
       <>
-        <Graphic src={null} alt="" />
+        <Graphic src={logo} alt="" />
         <Title>Welcome to Gecko</Title>
       </>
     ),
@@ -73,6 +75,7 @@ const slides = [
 
 const Onboarding = () => {
   const [step, setStep] = useState(0);
+  const { push } = useHistory();
 
   return (
     <Container>
@@ -89,7 +92,7 @@ const Onboarding = () => {
         <ArrowButton
           disabled={step > slides.length-1}
           type="button"
-          onClick={() => step < slides.length-1 ? setStep(step+1) : console.log('done')}
+          onClick={() => step < slides.length-1 ? setStep(step+1) : push('/home')}
         ><img src={step < slides.length-1 ? arrowRight : check} alt="" /></ArrowButton>
       </Controls>
     </Container>

@@ -32,8 +32,8 @@ export const P = styled.p`
 `;
 
 export const Graphic = styled.img`
-  width: 80px;
-  margin: 10px 0;
+  width: 100px;
+  margin-bottom: 30px;
 `;
 
 export const Controls = styled.div`
@@ -49,8 +49,10 @@ export const ArrowButton = styled.button`
   width: 80px;
   border-radius: 10px;
   background: #DDD;
+  cursor: pointer;
 
   ${props => props.disabled && `
     opacity: .3;
+    cursor: not-allowed;
   `}
 `;
