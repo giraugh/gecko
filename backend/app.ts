@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors'
 import expectFields from './src/middleware/expectFields'
 import {
     getUser,
@@ -11,6 +12,7 @@ import {
 
 const app = express()
 app.use(express.json())
+app.use(cors())
 
 // Required fields for POST routes
 const createUserFields = ['email', 'phone']

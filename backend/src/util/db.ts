@@ -99,7 +99,8 @@ export const getSponsoredGoals = (id) => new Promise((resolve, reject) => {
     })
 })
 
-const NoSuchRowError = (message) => ({
-    name: 'NoSuchRowError',
+export const NO_SUCH_ROW_ERR = 'NoSuchRowError'
+export const NoSuchRowError = (message) => ({
+    name: NO_SUCH_ROW_ERR,
     message
 })
