@@ -43,6 +43,7 @@ const CreateTask = () => {
 
   const onSubmit = data => {
     //TODO create goal in API
+    console.log(data);
     push('/goal/0');
   };
 
@@ -71,6 +72,8 @@ const CreateTask = () => {
           }}>🏃‍♂️ Daily Run</Prefab>
           <Prefab type="button" onClick={() => {
             setValue('task_name', '📖 Finish a book');
+            setValue('amount', '20');
+            setValue('date', '2021-03-12');
             setStep(1);
           }}>📖 Finish a book</Prefab>
           <Prefab type="button" onClick={() => {
