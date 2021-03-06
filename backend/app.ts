@@ -5,7 +5,7 @@ import {
     getUser,
     getGoal,
     getCharity,
-    getAllCharities
+    getAllCharities,
     getAuthoredGoals,
     getRefereedGoals,
     createGoal,
