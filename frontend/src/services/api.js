@@ -19,8 +19,7 @@ export const getUser = async (id) => {
 
 export const getGoal = async (id) => {
     const res = await instance.get(`/goals?id=${id}`)
-    // #HACK #TODO #SORRY #FIX tHIS
-    return res.data.user
+    return res.data.goal
 }
 
 export const getRefereedGoals = async (id) => {
