@@ -1,5 +1,5 @@
 import md5 from 'md5';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Button } from 'components';
 
@@ -9,6 +9,7 @@ import {
   GoalContainer,
   GoalList,
   GoalImage,
+  GoalDetails,
   TotalPledge,
   TotalPledgeLabel
 } from './homeStyle';
@@ -44,11 +45,13 @@ const Home = () => {
             {goals.map(goal => <Goal goal={goal} key={goal.id} avatarUserField='author' /> )}
           </GoalList>
       </> : <>
-        <h3>Loading... </h3>
+        <h3></h3>
       </>}
+      {/*
       <Button type="button" onClick={() => push('/goal/test')}>View test goal</Button>
       <Button type="button" onClick={() => push('/new')}>Create a new goal</Button>
       <Button type="button" onClick={() => push('/')}>View onboarding</Button>
+      */}
     </Container>
   );
 };
@@ -67,25 +70,32 @@ const Goal = ({ goal, avatarUserField }) => {
     const remainingDays = Math.floor(remainingHours / 24)
 
     return (
+    <Link to={`/goal/${goal.id}`} style={{textDecoration: 'none' }}>
        <GoalContainer>
          <div>
             {
                 user
-                    ? <GoalImage src={gravatarLink(user.email)} alt='profile' />
+                    ? <GoalImage src={gravatarLink(goal.id)} alt='profile' />
                     : <GoalImage src={gravatarLink(goal.id)} alt='profile' />
             }
          </div>
          <div>
-            <h3>{'Goal Name Here: ' + goal.id}</h3>
-            <span>
-                {
-                    remainingDays > 0
-                        ? <> {remainingDays} days </>
-                        : <> {remainingHours} hours </>
-                }
-            </span>
-         </div>
+             <h3>{goal.name}</h3>
+             <GoalDetails>
+                <span>
+                    {goal.amount}$
+                </span>
+                <span>
+                    {
+                        remainingDays > 0
+                            ? <> {remainingDays} days </>
+                            : <> {remainingHours} hours </>
+                    } remaining
+                </span>
+             </GoalDetails>
+       </div>
        </GoalContainer>
+       </Link>
     )
 }
 

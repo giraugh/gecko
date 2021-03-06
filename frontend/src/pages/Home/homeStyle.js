@@ -55,3 +55,21 @@ export const TotalPledgeLabel = styled.span`
   font-size: 2rem;
   font-style: italic;
 `
+
+export const GoalDetails = styled.div`
+  display: flex;
+
+  & > span:first-child {
+   font-weight: bold;
+  }
+
+  & > span:first-child:after {
+    margin-left: 4px;
+    content: '-';
+    font-weight: normal;
+  }
+
+  & > span {
+    margin-right: 3px;
+  }
+`
