@@ -39,7 +39,7 @@ const Home = () => {
       {goals ? <>
           <TotalPledge>
             <TotalPledgeLabel>Total Pledged</TotalPledgeLabel>
-            <span>{goals ? goals.map(g => g.amount).reduce(sum, 0) : 0}$</span>
+            <span>${goals ? goals.map(g => g.amount).reduce(sum, 0) : 0}</span>
           </TotalPledge>
           <GoalList>
             {goals.map(goal => <Goal goal={goal} key={goal.id} avatarUserField='author' /> )}
@@ -83,7 +83,7 @@ const Goal = ({ goal, avatarUserField }) => {
              <h3>{goal.name}</h3>
              <GoalDetails>
                 <span>
-                    {goal.amount}$
+                    ${goal.amount}
                 </span>
                 <span>
                     {
