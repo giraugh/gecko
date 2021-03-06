@@ -116,7 +116,7 @@ const CreateTask = () => {
             type="phone"
             placeholder={'📞 Mobile number'}
           />
-          <Button type="button">Invite</Button>
+          <Button type="button" variant="secondary">Invite</Button>
         </>
       )}
 
