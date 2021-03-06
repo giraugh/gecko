@@ -8,6 +8,7 @@ import {
   CreateTask,
   TaskDetails,
   Whoa,
+  Approve,
 } from 'pages';
 
 import theme from 'theme';
@@ -32,6 +33,7 @@ const App = () => {
           <Route path="/home" component={Home} exact />
           <Route path="/new" component={CreateTask} exact />
           <Route path="/goal/:id" component={TaskDetails} exact />
+          <Route path="/goal/:id/approve" component={Approve} />
         </Switch>
       </ThemeProvider>
     </BrowserRouter>
