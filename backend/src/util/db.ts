@@ -16,6 +16,7 @@ db.serialize(() => {
     // Create Goals Table
     db.exec(`CREATE TABLE IF NOT EXISTS Goals (
         id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        name VARCHAR(100),
         author INTEGER NOT NULL,
         friend INTEGER NOT NULL,
         amount DECIMAL,
@@ -107,9 +108,9 @@ export const createUser = (fields) => new Promise((resolve, reject) => {
     })
 })
 
-const CREATE_GOAL = `INSERT INTO Goals (author, friend, amount, startDate, endDate, charity) VALUES`
+const CREATE_GOAL = `INSERT INTO Goals (name, author, friend, amount, startDate, endDate, charity) VALUES`
 export const createGoal = (fields) => new Promise((resolve, reject) => {
-    const query = `${CREATE_GOAL}("${fields.author}","${fields.friend}", "${fields.amount}", "${fields.startDate}", "${fields.endDate}", "${fields.charity}");`
+    const query = `${CREATE_GOAL}("${fields.name}", "${fields.author}","${fields.friend}", "${fields.amount}", "${fields.startDate}", "${fields.endDate}", "${fields.charity}");`
     db.run(query, function (err) {
         if (err) {
             reject(err)

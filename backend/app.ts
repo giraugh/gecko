@@ -19,6 +19,7 @@ app.use(cors())
 // Required fields for POST routes
 const createUserFields = ['email', 'phone', 'name']
 const createGoalFields = [
+    'name',
     'author', 
     'friend',
     'amount',

@@ -32,6 +32,7 @@ const loadTestData = db => {
     
     const testGoals = [
         {
+            name: 'Finish a book',
             author: 1,
             friend: 2,
             amount: 5.00,
@@ -40,6 +41,34 @@ const loadTestData = db => {
             endDate: Date.now() + 86400000
         },
         {
+            name: 'Learn a guitar solo',
+            author: 1,
+            friend: 2,
+            amount: 10.00,
+            charity: 1,
+            startDate: Date.now(),
+            endDate: Date.now() + 86400000
+        },
+        {
+            name: 'Avoid Coffee',
+            author: 1,
+            friend: 2,
+            amount: 9.00,
+            charity: 2,
+            startDate: Date.now(),
+            endDate: Date.now() + 86400000
+        },
+        {
+            name: 'Win UNIHACK',
+            author: 1,
+            friend: 2,
+            amount: 13.00,
+            charity: 1,
+            startDate: Date.now(),
+            endDate: Date.now() + 86400000
+        },
+        {
+            name: 'Complete marathon',
             author: 2,
             friend: 1,
             amount: 10.20,
@@ -56,11 +85,11 @@ const loadTestData = db => {
         .map(({name, url, imageUrl}) => `("${name}", "${url}", "${imageUrl}")`)
         .join(',')
     const goalValues = testGoals
-        .map(g => `("${g.author}", "${g.friend}", "${g.amount}", "${g.charity}", "${g.startDate}", "${g.endDate}")`)
+        .map(g => `("${g.name}", "${g.author}", "${g.friend}", "${g.amount}", "${g.charity}", "${g.startDate}", "${g.endDate}")`)
         .join(',')
     db.exec(`INSERT INTO Users (name, email, phone) VALUES ${userValues}`)
     db.exec(`INSERT INTO Charities (name, url, imageUrl) VALUES ${charityValues}`)
-    db.exec(`INSERT INTO Goals (author, friend, amount, charity, startDate, endDate) VALUES ${goalValues}`)
+    db.exec(`INSERT INTO Goals (name, author, friend, amount, charity, startDate, endDate) VALUES ${goalValues}`)
 }
 
 export default loadTestData
