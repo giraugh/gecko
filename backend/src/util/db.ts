@@ -9,17 +9,28 @@ db.serialize(() => {
     db.exec(`CREATE TABLE IF NOT EXISTS Users (
         id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
         email VARCHAR(100),
-        phone VARCHAR(100)
+        phone VARCHAR(100),
+        name VARCHAR(100)
     );`)
 
     // Create Goals Table
-    db.exec(`CREATE TABLE IF NOT EXISTS goals (
+    db.exec(`CREATE TABLE IF NOT EXISTS Goals (
         id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
         author INTEGER NOT NULL,
         friend INTEGER NOT NULL,
         amount DECIMAL,
         startDate INTEGER,
-        endDate INTEGER
+        endDate INTEGER,
+        completed BOOLEAN DEFAULT FALSE,
+        charity INTEGER
+    );`)
+
+    // Create charities table
+    db.exec(`CREATE TABLE IF NOT EXISTS Charities (
+        id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        name VARCHAR(100),
+        url VARCHAR(100),
+        imageUrl VARCHAR(100)
     );`)
 
     // Load test data
@@ -33,6 +44,20 @@ export const getUser = id => new Promise((resolve, reject) => {
         } else {
             if (row === undefined) {
                 reject(NoSuchRowError(`No such user with id ${id}`))
+            } else {
+                resolve(row)
+            }
+        }
+    })
+})
+
+export const getCharity = id => new Promise((resolve, reject) => {
+    db.get(`SELECT * FROM Charities WHERE id=${id}`, (err, row) => {
+        if (err) {
+            reject(err)
+        } else {
+            if (row == undefined) {
+                reject(NoSuchRowError(`No such charity with id ${id}`))
             } else {
                 resolve(row)
             }
@@ -54,9 +79,9 @@ export const getGoal = id => new Promise((resolve, reject) => {
     })
 })
 
-const CREATE_USER = `INSERT INTO Users (email, phone) VALUES`
-export const createUser = ({ email, phone }) => new Promise((resolve, reject) => {
-    const query = `${CREATE_USER}("${email}","${phone}");`
+const CREATE_USER = `INSERT INTO Users (email, phone, name) VALUES`
+export const createUser = (fields) => new Promise((resolve, reject) => {
+    const query = `${CREATE_USER}("${fields.email}","${fields.phone}", "${fields.name}");`
     db.run(query, function (err) {
         if (err) {
             reject(err)
@@ -68,10 +93,9 @@ export const createUser = ({ email, phone }) => new Promise((resolve, reject) =>
     })
 })
 
-const CREATE_GOAL = `INSERT INTO Goals (author, friend, amount, startDate, endDate) VALUES`
+const CREATE_GOAL = `INSERT INTO Goals (author, friend, amount, startDate, endDate, charity) VALUES`
 export const createGoal = (fields) => new Promise((resolve, reject) => {
-    const query = `${CREATE_GOAL}("${fields.author}","${fields.friend}", "${fields.amount}", "${fields.startDate}", "${fields.endDate}");`
-    console.log('queyr', query)
+    const query = `${CREATE_GOAL}("${fields.author}","${fields.friend}", "${fields.amount}", "${fields.startDate}", "${fields.endDate}", "${fields.charity}");`
     db.run(query, function (err) {
         if (err) {
             reject(err)

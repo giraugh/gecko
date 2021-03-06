@@ -4,6 +4,7 @@ import expectFields from './src/middleware/expectFields'
 import {
     getUser,
     getGoal,
+    getCharity,
     getAuthoredGoals,
     getRefereedGoals,
     createGoal,
@@ -15,19 +16,21 @@ app.use(express.json())
 app.use(cors())
 
 // Required fields for POST routes
-const createUserFields = ['email', 'phone']
+const createUserFields = ['email', 'phone', 'name']
 const createGoalFields = [
     'author', 
     'friend',
     'amount',
     'endDate',
-    'startDate'
+    'startDate',
+    'charity'
 ]
 
 // Declare routes
 app.get('/', async (req, res) => res.send('Gecko Backend'))
 app.get('/users', expectFields(['id'], 'query'), getUser)
 app.get('/goals', expectFields(['id'], 'query'), getGoal)
+app.get('/charities', expectFields(['id'], 'query'), getCharity)
 app.get('/goals/authored', expectFields(['id'], 'query'), getAuthoredGoals)
 app.get('/goals/refereed', expectFields(['id'], 'query'), getRefereedGoals)
 app.post('/users', expectFields(createUserFields, 'body'), createUser)
