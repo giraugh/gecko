@@ -50,3 +50,11 @@ export const createUser = async ({ email, phone }) => {
     })
     return res.data.user
 }
+
+export const setGoalCompleted = async (id, completed) => {
+    const res = await instance.post(`/goals/complete`, {
+        id,
+        completed
+    })
+    return res.data.goal
+}

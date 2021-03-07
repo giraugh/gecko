@@ -10,7 +10,7 @@ import {
     Title,
     ButtonLabel
 } from './approveStyle.js'
-import { getUser, getGoal } from '../../services/api'
+import { getUser, getGoal, setGoalCompleted } from '../../services/api'
 import { Fireworks } from 'fireworks/lib/react'
 
 // todo
@@ -41,6 +41,9 @@ const Approve = ({match}) => {
 
     const handleApprove = () => {
         setShowFX(true)
+        if (goal) {
+            setGoalCompleted(goalId, !goal.completed).then(setGoal)
+        }
     }
 
     return <div>
@@ -51,7 +54,7 @@ const Approve = ({match}) => {
                 Has { goal && <UserName id={goal.author} />} completed this task?
             </ButtonLabel>
             <ButtonContainer>
-                <button disabled={goal ? goal.completed : false} onClick={handleApprove}>
+                <button disabled={false && (goal ? goal.completed : false)} onClick={handleApprove}>
                 { (goal ? goal.completed : false) ? 'Approved' : 'Approve!'}
             </button>
             </ButtonContainer>
