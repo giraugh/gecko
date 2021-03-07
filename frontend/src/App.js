@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { HashRouter, Switch, Route } from 'react-router-dom';
 import { ThemeProvider, Global } from '@emotion/react';
 
 import {
@@ -15,7 +15,7 @@ import theme from 'theme';
 
 const App = () => {
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <HashRouter basename={process.env.PUBLIC_URL}>
       <ThemeProvider theme={theme}>
         <Global styles={theme => ({
           html: {
@@ -36,7 +36,7 @@ const App = () => {
           <Route path="/goal/:id/approve" component={Approve} />
         </Switch>
       </ThemeProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
