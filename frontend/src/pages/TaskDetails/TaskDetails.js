@@ -77,7 +77,7 @@ const TaskDetails = ({ match }) => {
       </Ring>
 
       <div style={{ flex: 1 }}></div>
-
+        <button style={{opacity: 0}} onClick={() => push(`/goal/${goalId}/approve`)}>&nbsp;</button>
       <Content>
         <Title>{goal.name}</Title>
         <Remaining>23 hours remaining</Remaining>
