@@ -49,7 +49,7 @@ const slides = [
     content: (
       <>
         <Title>Select a charity</Title>
-        <P>Couldn't reach your goal? That's ok! You're failure will help others succeed 🌍</P>
+        <P>If you don't reach your goal, your failure will make the world a better place 🌍</P>
       </>
     ),
   },
