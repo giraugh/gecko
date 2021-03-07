@@ -15,7 +15,7 @@ import theme from 'theme';
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <ThemeProvider theme={theme}>
         <Global styles={theme => ({
           html: {
