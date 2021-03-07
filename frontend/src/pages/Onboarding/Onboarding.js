@@ -30,8 +30,8 @@ const slides = [
     color: '#762dad',
     content: (
       <>
-        <Title>Create a task</Title>
-        <P>Some copy blah blah</P>
+        <Title>Set a goal</Title>
+        <P>Make it SMART: Specific, Measurable, Attainable, Relevant, and Time-limited 🧠</P>
       </>
     ),
   },
@@ -40,7 +40,7 @@ const slides = [
     content: (
       <>
         <Title>Set an amount</Title>
-        <P>Some copy blah blah</P>
+        <P>Pledge your own money and set the stakes to motivate you to complete your goal 💸</P>
       </>
     ),
   },
@@ -49,7 +49,7 @@ const slides = [
     content: (
       <>
         <Title>Select a charity</Title>
-        <P>Some copy blah blah</P>
+        <P>Couldn't reach your goal? That's ok! You're failure will help others succeed 🌍</P>
       </>
     ),
   },
@@ -58,7 +58,7 @@ const slides = [
     content: (
       <>
         <Title>Finished?</Title>
-        <P>If a friend confirms you've completed the task, you get your money back</P>
+        <P>If a friend confirms you've completed the task, you get your money back 💰</P>
       </>
     ),
   },
@@ -67,7 +67,7 @@ const slides = [
     content: (
       <>
         <Title>Didn't finish in time?</Title>
-        <P>Your money will get donated to charity instead</P>
+        <P>Your money will get donated to charity instead 💌</P>
       </>
     ),
   },
