@@ -9,7 +9,8 @@ import {
     getAuthoredGoals,
     getRefereedGoals,
     createGoal,
-    createUser
+    createUser,
+    setGoalComplete
 } from './src/routes/routes'
 
 const app = express()
@@ -38,6 +39,7 @@ app.get('/goals/authored', expectFields(['id'], 'query'), getAuthoredGoals)
 app.get('/goals/refereed', expectFields(['id'], 'query'), getRefereedGoals)
 app.post('/users', expectFields(createUserFields, 'body'), createUser)
 app.post('/goals', expectFields(createGoalFields, 'body'), createGoal)
+app.post('/goals/complete', expectFields(['id', 'completed'], 'body'), setGoalComplete)
 
 // Startup app
 const port = process.env.PORT || 3000

@@ -142,6 +142,18 @@ export const getSponsoredGoals = (id) => new Promise((resolve, reject) => {
     })
 })
 
+export const setGoalComplete = (id, completed) => new Promise((resolve, reject) => {
+    db.run(`UPDATE Goals SET completed=${completed ? 'TRUE' : 'FALSE'} WHERE id=${id};`, error => {
+        if (error) {
+            reject(error)
+        } else {
+            getGoal(id)
+                .then(goal => resolve(goal)) 
+                .catch(err => reject(err))
+        }
+    })
+})
+
 export const NO_SUCH_ROW_ERR = 'NoSuchRowError'
 export const NoSuchRowError = (message) => ({
     name: NO_SUCH_ROW_ERR,
