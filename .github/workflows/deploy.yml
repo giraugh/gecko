@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
         CI: false
+        PUBLIC_URL: "/gecko"
     defaults:
         run:
             working-directory: frontend
